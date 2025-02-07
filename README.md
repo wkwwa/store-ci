@@ -2,16 +2,17 @@
 
 <img width="500" alt="image" src="https://user-images.githubusercontent.com/9394918/167876466-2c530828-d658-4efe-9064-825626cc6db5.png">
 
-В этом демо содержится код сборки и релиза [интернет-магазина](https://gitlab.praktikum-services.ru/Stasyan/momo-store).
+This repository contains the build and release code for the [online store](https://gitlab.praktikum-services.ru/Stasyan/momo-store).
 
-Этот этап являеется первым этапом полного цикла сборки-поставки приложения, используя практики CI/CD.
+This stage is the first stage of a full application build-delivery cycle, using CI/CD practices.
 
-Этап поставки приложения и развертывания инфраструктуры описан [здесь](https://github.com/wkwwa/store-cd)
+The application delivery and infrastructure deployment stage is described [here](https://github.com/wkwwa/store-cd)
 
-CI реализован через [Downstream Pipeline](.gitlab-ci.yml) и содержит 2-х дочерних пайплайна [backend](backend/.gitlab-ci.yml) и [frontend](frontend/.gitlab-ci.yml), запускающих multi-stage сборку и релиз в приватный Registry Gitlab Docker-образов [backend](backend/Dockerfile) и [frontend](frontend/Dockerfile).
+CI is implemented through a [Downstream Pipeline](.gitlab-ci.yml) and contains 2 child pipelines: [backend](backend/.gitlab-ci.yml) и [frontend](frontend/.gitlab-ci.yml), launching a multi-stage build and release of Docker images [backend](backend/Dockerfile) и [frontend](frontend/Dockerfile) to a private Gitlab Registry.
+ 
+The CI includes Semgrep SAST static analysis. 
 
-В CI включен статический анализ Semgrep SAST. 
-Cборка артефактов производится с версионированием по SemVer.
+Artifact building is done with SemVer versioning.
 
 ## To start the application from registry
 
@@ -28,7 +29,7 @@ Step 2. Start frontend
 docker run --rm -d --name momo-frontend --network=momo_network -p 80:80 registry.gitlab.com/devops3761117/momo-store/momo-frontend:latest
 ```
 
-Step 3: Access you application UI from browser 
+Step 3: Access you application UI from browser
 ```bash
 http://localhost:80
 ```
